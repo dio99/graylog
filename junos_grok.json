@@ -1,0 +1,33 @@
+{
+  "extractors": [
+    {
+      "condition_type": "string",
+      "condition_value": "junos",
+      "converters": [],
+      "cursor_strategy": "copy",
+      "extractor_config": {
+        "grok_pattern": "%{WORD:event} %{DATA:UNWANTED}%{SPACE}source-address=\"%{IP:src}\" source-port=\"%{INT:src_port}\" destination-address=\"%{IP:dst_ip}\" destination-port=\"%{INT:dst_port}\" service-name=\"%{WORD:service_name}\" nat-source-address=\"%{IP:nat_src_addr}\" nat-source-port=\"%{INT:nat_src_port}\" nat-destination-address=\"%{IP:nat_dst_addr}\" nat-destination-port=\"%{INT:nat_dst_port}\" src-nat-rule-name=\"%{WORD:src_nat_r_name}\" dst-nat-rule-name=\"%{WORD:dst_nat_r_name}\" protocol-id=\"%{INT:prot_id}\" policy-name=\"%{INT:pol_name}\" source-zone-name=\"%{USERNAME:src_z_name}\" destination-zone-name=\"%{USERNAME:dst_z_name}\" session-id-32=\"%{INT:session_id_32}\" username=\"%{DATA:username}\" roles=\"%{DATA:roles}\" packet-incoming-interface=\"%{DATA:incoming_interface}\" application=\"%{DATA:application}\" nested-application=\"%{DATA:nested_app}\" encrypted=\"%{DATA:encrypted}\"%{GREEDYDATA:UNWANTED}"
+      },
+      "extractor_type": "grok",
+      "order": 0,
+      "source_field": "message",
+      "target_field": "message",
+      "title": "junos"
+    },
+    {
+      "condition_type": "string",
+      "condition_value": "junos",
+      "converters": [],
+      "cursor_strategy": "copy",
+      "extractor_config": {
+        "grok_pattern": "%{RT_FLOW_EVENT:event} %{DATA:UNWANTED} reason=\"%{DATA:close-reason}\"%{SPACE}source-address=\"%{IP:src}\" source-port=\"%{INT:src_port}\" destination-address=\"%{IP:dst_ip}\" destination-port=\"%{INT:dst_port}\" service-name=\"%{DATA:service_name}\" nat-source-address=\"%{IP:nat_src_addr}\" nat-source-port=\"%{INT:nat_src_port}\" nat-destination-address=\"%{IP:nat_dst_addr}\" nat-destination-port=\"%{INT:nat_dst_port}\" src-nat-rule-name=\"%{WORD:src_nat_r_name}\" dst-nat-rule-name=\"%{WORD:dst_nat_r_name}\" protocol-id=\"%{INT:prot_id}\" policy-name=\"%{INT:pol_name}\" source-zone-name=\"%{USERNAME:src_z_name}\" destination-zone-name=\"%{USERNAME:dst_z_name}\" session-id-32=\"%{INT:session_id_32}\" packets-from-client=\"%{INT:packets_from_client}\" bytes-from-client=\"%{INT:bytes_from_client}\" packets-from-server=\"%{INT:packets_from_server}\" bytes-from-server=\"%{INT:bytes_from_server}\" elapsed-time=\"%{INT:elapsed_time}\" application=\"%{DATA:application}\" nested-application=\"%{DATA:nested_app}\" username=\"%{DATA:username}\" roles=\"%{DATA:roles}\" packet-incoming-interface=\"%{DATA:incoming_interface}\" encrypted=\"%{DATA:encrypted}\""
+      },
+      "extractor_type": "grok",
+      "order": 0,
+      "source_field": "message",
+      "target_field": "message",
+      "title": "junos session"
+    }
+  ],
+  "version": "1.3.4 (0d67a80)"
+}
