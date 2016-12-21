@@ -1,0 +1,19 @@
+{
+  "extractors": [
+   {
+      "title": "pulsesecure",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{TIMESTAMP_ISO8601:timestamp}%{SPACE}%{PROG:app}%{SPACE}%{TIMESTAMP_ISO8601:app_time}%{SPACE}-%{SPACE}%{NOTSPACE:code}%{SPACE}-%{SPACE}\\[%{IPORHOST:source_host}\\](?:%{NOTSPACE}|%{SPACE})(?:%{EMAILADDRESS:username}|System)\\(%{DATA:app_action}\\)\\[%{DATA:app_action_detail}\\]%{SPACE}-%{SPACE}%{GREEDYDATA:app_message}"
+      },
+      "condition_type": "string",
+      "condition_value": "PulseS"
+    }
+  ],
+  "version": "2.1.0-SNAPSHOT"
+}
